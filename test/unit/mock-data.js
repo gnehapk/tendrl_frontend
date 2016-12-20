@@ -129,16 +129,27 @@
                 }
             ]
         },
-        attributes: [{
+        attributes:  {
+            "name":"CephImportCluster",
+            "method":"POST",
+            "attributes":[{
                 "name": "Node[]",
                 "type": "List",
                 "required": true
-            }, {
+            },{
+                "name": "Tendrl_context.sds_name",
                 "help": "Name of the Tendrl managed sds, eg: 'gluster'",
+                "type":"String",
+                "default": null,
+                "required": true
+            },{
+                "name": "Tendrl_context.sds_version",
+                "help": "Version of the Tendrl managed sds, eg: '3.2.1'",
                 "type": "String",
-                "name": "sds_name",
-                "required": false
+                "default": null,
+                "required": true
             }]
+        }
     });
 
     testDataModule.value("utilsMockResponse", {

@@ -6,7 +6,7 @@
     app.controller("importClusterController", importClusterController);
 
     /*@ngInject*/
-    function importClusterController($rootScope, $state, utils, config) {
+    function importClusterController($rootScope, $state, utils) {
         var vm = this;
 
         vm.heading = "Import Cluster";
@@ -27,6 +27,7 @@
         }
 
         function callBack(response) {
+            $rootScope.notification = {};
             $rootScope.notification.type = "success";
             $rootScope.notification.message = "JOB is under process. and JOB-ID is - " + response.job_id;
             $state.go("cluster");

@@ -1,0 +1,92 @@
+.tendrl-task-container {
+
+    .progress-field {
+        margin-top: 12px;
+        margin-bottom: -10px;
+
+        .progress-icon {
+            margin: 2px 8px 0 0;
+        }
+    }
+
+    .div-with-scroll {
+        height: 250px;
+        overflow: scroll;
+        overflow-x: hidden;
+        margin: 20px 0;
+        padding: 5px 0 0 5px;
+
+        .row {
+            margin-left: 0;
+        }
+
+        .steps-table > .list-group-item:nth-child(2n) {
+            background-color: $color-white-smoke;
+            border-left-color: transparent;
+            border-right-color: transparent;
+        }
+
+        .list-group-item {
+            border: none;
+
+            .checkbox-custom{
+                opacity: 0;
+                position: absolute;   
+            }
+
+            .checkbox-custom, .checkbox-custom-label{
+                display: inline-block;
+                vertical-align: middle;
+                margin: 5px;
+                cursor: pointer;
+            }
+
+            .checkbox-custom-label{
+                position: relative;
+            }
+
+            .checkbox-custom + .checkbox-custom-label:before {
+                content: '';
+                border: 1px solid $color-orange;
+                border-radius: 3px;
+                display: inline-block;
+                vertical-align: middle;
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+                text-align: center;
+            }
+
+            .checkbox-custom:checked + .checkbox-custom-label:before {
+                content: "\f00c";
+                font-family: 'FontAwesome';
+                color: $color-orange;
+            }
+
+            .error{
+                &.checkbox-custom + .checkbox-custom-label:before {
+                    border: 1px solid $color-red;
+                }
+
+                &.checkbox-custom:checked + .checkbox-custom-label:before {
+                    color: $color-red;
+                }
+            }
+        }
+            
+    }
+
+    .div-with-scroll-logs {
+        height: 200px;
+        padding: 0;
+        .list-group-item:nth-child(2n+1) {
+            background-color: $color-white-smoke;
+            border-left-color: transparent;
+            border-right-color: transparent;
+        }
+
+        .table-heading {
+            margin: 2px 0 0 7px;
+        }
+    }
+}

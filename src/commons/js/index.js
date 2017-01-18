@@ -53,7 +53,7 @@
                                     if($rootScope.clusterData !== null && $rootScope.clusterData.clusters.length !== 0){
                                         /* Forward to cluster view if we have cluster data. */
                                         $rootScope.isNavigationShow = true;
-                                        $state.go("cluster");
+                                        $state.go("clusters");
                                     }else{
                                         /* Forward to home view if we don't have cluster data. */
                                         $rootScope.isNavigationShow = false;
@@ -69,8 +69,8 @@
                         controller: "homeController",
                         controllerAs: "homeCntrl"
                     })
-                    .state("cluster", {
-                        url: "/cluster",
+                    .state("clusters", {
+                        url: "/clusters",
                         templateUrl: "/modules/cluster/cluster-list/cluster-list.html",
                         controller: "clusterController",
                         controllerAs: "clusterCntrl"
@@ -87,20 +87,20 @@
                         controller: "clusterDetailController",
                         controllerAs: "clusterDetail"
                     })
-                    .state("host", {
-                        url: "/host",
+                    .state("hosts", {
+                        url: "/hosts",
                         templateUrl: "/modules/host/host-list/host-list.html",
                         controller: "hostController",
                         controllerAs: "hostCntrl"
                     })
-                    .state("file-share", {
-                        url: "/file-share",
+                    .state("file-shares", {
+                        url: "/file-shares",
                         templateUrl: "/modules/file-share/file-share-list/file-share-list.html",
                         controller: "fileShareController",
                         controllerAs: "fileShareCntrl"
                     })
-                    .state("pool", {
-                        url: "/pool",
+                    .state("pools", {
+                        url: "/pools",
                         templateUrl: "/modules/pool/pool-list/pool-list.html",
                         controller: "poolController",
                         controllerAs: "poolCntrl"
@@ -113,7 +113,7 @@
                     })
                     .state("task", {
                         url: "/admin/task",
-                        templateUrl: "/modules/task/task.html",
+                        templateUrl: "/modules/tasks/tasks.html",
                         controller: "taskController",
                         controllerAs: "taskCntrl"
                     });

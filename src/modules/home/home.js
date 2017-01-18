@@ -15,7 +15,7 @@
         $scope.$on("GotClusterData", function (event, data) {
             if($rootScope.clusterData !== null && $rootScope.clusterData.clusters.length !== 0){
                 /* Forward to cluster view if we have don't have at least one cluster */
-                $state.go("cluster");
+                $state.go("clusters");
             }
         });
 

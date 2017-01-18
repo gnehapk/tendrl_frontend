@@ -1,0 +1,22 @@
+{
+    "status": "finished",
+    "flow": null,
+    "parameters": {
+        "log": [],
+        "Tendrl_context.sds_version": "3.9rc1",
+        "Volume.volname": "vol10",
+        "Volume.vol_id": "5bef591e-e0e6-434f-9957-d76945347844",
+        "Tendrl_context.cluster_id": "49f878e3-e253-4fad-a947-cb987bba503d",
+        "Tendrl_context.sds_name": "gluster",
+        "_method": "DELETE"
+    },
+    "created_at": "2012-09-27",
+    "log": "/jobs//logs?type=",
+    "log_types": [
+        "all",
+        "info",
+        "debug",
+        "warn",
+        "error"
+    ]
+}

@@ -1,0 +1,80 @@
+<div class="tendrl-task-container">
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li><a href="">Tasks</a></li>
+            <li>Task Details: Import Cluster</li>
+        </ol>
+
+        <div class="row">
+            <div class="col-md-1">
+                <label>Time Submitted:</label>
+            </div>
+            <div class="col-md-2">
+                <label>{{taskCntrl.taskDetails.created_at | date}}</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1">
+                <label>Submitted By:</label>
+            </div>
+            <div class="col-md-2">
+                <label>{{taskCntrl.taskDetails.user || "NA"}}</label>
+            </div>
+        </div>
+
+        <div class="row progress-field" ng-if="taskCntrl.taskDetails.status !== 'finished'">
+            <div class="col-md-3">
+                <div class="spinner spinner-sm pull-left progress-icon"></div>
+                <label>In Progress</label>
+            </div>
+        </div>
+
+        <div class="row progress-field" ng-if="taskCntrl.taskDetails.status === 'finished'">
+            <div class="col-md-3">
+                <span class="pficon pficon-ok progress-icon list-view-pf-icon-success"></span>
+                <label>Completed</label>
+            </div>
+        </div>
+
+        <!-- <div class="div-with-scroll table-bordered">
+            <div class="row bold-text">
+                Execution Steps
+            </div>
+
+            <div class="steps-table row">
+                <div ng-if="taskCntrl.isDataLoading" class="row dataLoading"></div>
+                <div ng-if="!taskCntrl.isDataLoading" class="row list-group-item" ng-repeat="step in taskCntrl.taskDetails.steps">
+                    <div class="col-md-12">
+                            {{step}}
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- <div>
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="#">Events</a></li>
+                <li role="presentation"><a>Logs</a></li>
+            </ul>
+        </div> -->
+
+        <div class="div-with-scroll table-bordered div-with-scroll-logs">
+            <div class="row bold-text table-heading">
+                Logs
+            </div>
+            <div ng-if="taskCntrl.isDataLoading" class="row dataLoading"></div>
+                <div ng-if="!taskCntrl.isDataLoading" class="row list-group-item" ng-repeat="log in taskCntrl.taskDetails.logs" id="log-list-group-item-{{$index+1}}">
+                        <!-- <div class="col-md-1">
+                            <div ng-show="log.type !== 'info'">
+                            <input type="checkbox" class="checkbox-custom" ng-class="{'error': log.type === 'error'}" id="test{{$index+1}}">
+                            <label for="test{{$index+1}}" class="checkbox-custom-label"></label>
+                            </div>
+                        </div> -->
+                        <div class="col-md-12">
+                            {{log}}
+                        </div>
+                </div>
+        </div>
+    </div>
+</div>

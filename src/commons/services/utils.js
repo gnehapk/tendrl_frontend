@@ -18,7 +18,8 @@
             key, 
             clusterData, 
             len, 
-            clusterObj;
+            clusterOb,
+            j;
 
 
         vm.takeAction = function(data, postUrl, formMethod, clusterId) {
@@ -80,7 +81,8 @@
             //     url = config.baseUrl + "Get" + objectType +"List";
             // }
 
-            url = config.baseUrl + "Get" + objectType +"List";
+            //url = config.baseUrl + "Get" + objectType +"List";
+            url = "/api/GetClusterList.json";
 
             getObjectListRequest = {
                 method: "GET",
@@ -231,6 +233,50 @@
                 }
             }
             return hostList;
+        };
+
+        vm.getTaskDetails = function(jobId) {
+            var url, getTaskDetailsRequest, request;
+
+            if (jobId === undefined) {
+                //url = config.baseUrl + "jobs";
+                url = "/api/GetTaskDetails.json";
+            } else {
+                //url = config.baseUrl + "jobs/" + jobId;                
+            }
+
+            getTaskDetailsRequest = {
+                method: "GET",
+                url: url
+            };
+
+            request = angular.copy(getTaskDetailsRequest);
+            return $http(request).then(function (response) {
+                return response.data;
+            }, function() {
+                console.log("Error Occurred: while fetching getTaskDetails");
+                return null;
+            });
+        };
+
+        vm.getTaskLogs = function(type, jobId) {
+            var url, getTaskLogsRequest, request;
+
+            //url = config.baseUrl + "jobs/"  + JobId + "logs/type=" + type;
+            url = "/api/GetJobs.json";
+
+            getTaskLogsRequest = {
+                method: "GET",
+                url: url
+            };
+
+            request = angular.copy(getTaskLogsRequest);
+            return $http(request).then(function (response) {
+                return response.data;
+            }, function() {
+                console.log("Error Occurred: while fetching getTaskLogs");
+                return null;
+            });
         };
 
     }

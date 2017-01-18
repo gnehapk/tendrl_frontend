@@ -89,7 +89,7 @@
             if($rootScope.clusterData === null || $rootScope.clusterData.clusters.length === 0){
                 $state.go("home");
             }else {
-                $state.go("cluster");
+                $state.go("clusters");
             }
         }
 

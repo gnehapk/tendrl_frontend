@@ -14,7 +14,7 @@
         init();
 
         function init() {
-            utils.getObjectList("Node").then(function(list) {
+            utils.getObjectList("nodes").then(function(list) {
                 vm.isDataLoading = false;
                 vm.hostList = [];
                 if(list !== null) {

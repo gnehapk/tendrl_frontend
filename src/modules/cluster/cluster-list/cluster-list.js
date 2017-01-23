@@ -39,7 +39,7 @@
 
         timer = $interval(function () {
             
-            utils.getObjectList("Cluster")
+            utils.getObjectList("clusters")
                 .then(function(data) {
                     $rootScope.clusterData = data;
                     init();

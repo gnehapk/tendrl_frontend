@@ -62,7 +62,7 @@
         /*Refreshing list after each 30 second interval*/
         timer = $interval(function() {
 
-            utils.getObjectList("Cluster")
+            utils.getObjectList("clusters")
                 .then(function(data) {
                     $rootScope.clusterData = data;
                     init();

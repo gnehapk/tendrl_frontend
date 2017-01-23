@@ -14,7 +14,7 @@
         $rootScope.isNavigationShow = true;
 
         function init() {
-            utils.getObjectList("Cluster")
+            utils.getObjectList("clusters")
                 .then(function(data) {
                     $rootScope.clusterData = data;
                     if($rootScope.clusterData !== null && $rootScope.clusterData.clusters.length !== 0){

@@ -88,11 +88,11 @@ describe("UNIT SERVICE - utils", function () {
     it("Should get object list", function() {
         var response, objectType, clusterId;
         response = utilsMockResponse.objectList;
-        objectType = "Node";
+        objectType = "nodes";
         clusterId = "2323-ab224";
 
         // Setup data - expectation
-        $httpBackend.expectGET("/api/Get" + objectType +"List.json")
+        $httpBackend.expectGET("/api/" + objectType +".json")
             .respond(200, response);
 
         // Exercise SUT

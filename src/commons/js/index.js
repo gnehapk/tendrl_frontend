@@ -48,7 +48,7 @@
                         resolve: {
                             "landingPage": function($rootScope, $state, utils){  
                                 $rootScope.clusterData = null;
-                                utils.getObjectList("Cluster").then(function(list) {
+                                utils.getObjectList("clusters").then(function(list) {
                                     $rootScope.clusterData = list;
                                     if($rootScope.clusterData !== null && $rootScope.clusterData.clusters.length !== 0){
                                         /* Forward to cluster view if we have cluster data. */
@@ -119,7 +119,7 @@
                 And filling clusterData so that clusterData will be available
                 through whole application*/
                 $rootScope.clusterData = null;
-                utils.getObjectList("Cluster").then(function(list) {
+                utils.getObjectList("clusters").then(function(list) {
                     $rootScope.clusterData = list;
                     /* Setting up manual broadcast event for ClusterData*/
                     $rootScope.$broadcast("GotClusterData", $rootScope.clusterData); // going down!

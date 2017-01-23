@@ -20,7 +20,7 @@
 
         function init() {
             vm.isDataLoading = true;
-            utils.getObjectList("Node").then(function(list) {
+            utils.getObjectList("nodes").then(function(list) {
                 vm.isDataLoading = false;
                 vm.detectedClusters = [];
                 if(list !== null) {

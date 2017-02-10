@@ -116,9 +116,14 @@
                         templateUrl: "/modules/task/task.html",
                         controller: "taskController",
                         controllerAs: "taskCntrl"
+                    })
+                    .state("create-rbd", {
+                        url: "/create-rbd",
+                        templateUrl: "/modules/rbds/create-rbd/create-rbd.html",
+                        controller: "createRBDController",
+                        controllerAs: "createRBDCntrl"
                     });
-
-            });
+                });
 
             storageModule.run(function(utils, $rootScope, menuService) {
                 /* Tracking the current URI for navigation*/

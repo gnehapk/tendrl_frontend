@@ -101,7 +101,7 @@ gulp.task("jsLibraries", function() {
     "node_modules/c3-angular/c3-angular.min.js",
     
   ])
-  //.pipe(uglify())
+  .pipe(uglify())
   .pipe(concat("libraries.js"))
   .pipe(gulp.dest(paths.dest + paths.jsLibraries));
 });

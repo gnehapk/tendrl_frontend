@@ -80,7 +80,8 @@
             //     url = config.baseUrl + "Get" + objectType +"List";
             // }
 
-            url = config.baseUrl + "Get" + objectType +"List";
+            //url = config.baseUrl + "Get" + objectType +"List";
+            url = "/api/GetClusterList.json";
 
             getObjectListRequest = {
                 method: "GET",

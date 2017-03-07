@@ -20,8 +20,8 @@
     <div ng-if="clusterDetail.activeTab !== undefined">
         <cluster-host-list ng-if="clusterDetail.activeTab === 1"></cluster-host-list>
         <cluster-file-share-list ng-if="clusterDetail.activeTab === 2 && clusterDetail.clusterObj.sds_name ==='glusterfs'"></cluster-file-share-list>
-        <cluster-pool-list ng-if="clusterDetail.activeTab === 2 && clusterDetail.clusterObj.sds_name !=='glusterfs'"></cluster-pool-list>
-        <cluster-rbd-list ng-if="clusterDetail.activeTab === 3 && clusterDetail.clusterObj.sds_name !=='glusterfs'"></cluster-rbd-list>
+        <cluster-pool-list cluster-id="clusterId" is-navigation-show="isNavigationShow" ng-if="clusterDetail.activeTab === 2 && clusterDetail.clusterObj.sds_name !=='glusterfs'"></cluster-pool-list>
+        <cluster-rbd-list cluster-id="clusterId" ng-if="clusterDetail.activeTab === 3 && clusterDetail.clusterObj.sds_name !=='glusterfs'"></cluster-rbd-list>
     </div>
 
 </div>

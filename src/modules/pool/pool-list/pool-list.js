@@ -6,7 +6,7 @@
     app.controller("poolController", poolController);
 
     /*@ngInject*/
-    function poolController($scope, $rootScope, $state, $interval, config, utils) {
+    function poolController($scope, $rootScope, $state, $interval, config, utils, $stateParams) {
         var vm = this,
             key,
             len,
@@ -29,10 +29,14 @@
         vm.showClusterNAMsg = false;
         vm.errorInProcess = false;
 
+        if($stateParams.clusterId) {
+            $scope.isNavigationShow = vm.isNavigationShow;
+        }
+
         init();
 
         function init() {
-            list = utils.getPoolDetails($scope.clusterId);
+            list = utils.getPoolDetails(vm.clusterId);
             _createPoolList(list);
             vm.isDataLoading = false;
         }

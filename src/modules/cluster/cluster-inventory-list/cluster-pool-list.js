@@ -19,6 +19,10 @@
         return  {
                 restrict : "E",
                 controllerAs: "poolCntrl",
+                scope: {
+                    clusterId: "=",
+                    isNavigationShow: "="
+                },
                 bindToController: true,
                 controller: "poolController",
                 templateUrl: "/modules/pool/pool-list/pool-list.html"

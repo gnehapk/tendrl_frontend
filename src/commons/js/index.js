@@ -1,10 +1,10 @@
 //# sourceURL=storage-management-plugin.js
 (function() {
 
-    var storageModule = angular.module("TendrlModule", ["ui.router","ui.bootstrap","frapontillo.bootstrap-switch","gridshore.c3js.chart","patternfly.charts", "patternfly.card"]);
+    var storageModule = angular.module("TendrlModule", ["ui.router", "ui.bootstrap", "frapontillo.bootstrap-switch", "gridshore.c3js.chart", "patternfly.charts", "patternfly.card"]);
 
     /* Setting up provider for getting config data */
-    storageModule.provider("config", function () {
+    storageModule.provider("config", function() {
 
         /*Ideally this config should only contain
         configuration related stuff . it should not hold 
@@ -12,12 +12,14 @@
         var config = {};
 
         /* Accessible only in config function */
-        this.setConfigData = function (dataFromServer) {
+        this.setConfigData = function(dataFromServer) {
             config = dataFromServer;
         };
 
         /* Accessible in controller/service/factory */
-        this.$get = function() { return config; };
+        this.$get = function() {
+            return config; 
+        };
 
     });
 
@@ -27,7 +29,7 @@
 
     function fetchConfigData() {
         var initInjector = angular.injector(["ng"]);
-        
+
         var $http = initInjector.get("$http");
 
         return $http.get("../../config.json").then(function(response) {
@@ -39,23 +41,23 @@
                 $httpProvider.defaults.headers.post = {};
                 $httpProvider.defaults.headers.delete = {};
 
-                $urlRouterProvider.otherwise("/landing-page");
+                $urlRouterProvider.otherwise("/login");
 
                 $stateProvider
                     .state("landing-page", { /* This will decide which view will be landing page */
                         url: "/landing-page",
                         template: "<div ng-if='!isAPINotFoundError' class='spinner spinner-lg'><div>",
                         resolve: {
-                            "landingPage": function($rootScope, $state, utils){ 
-                                $rootScope.isAPINotFoundError = false; 
+                            "landingPage": function($rootScope, $state, utils) {
+                                $rootScope.isAPINotFoundError = false;
                                 $rootScope.clusterData = null;
                                 utils.getObjectList("Cluster").then(function(list) {
                                     $rootScope.clusterData = list;
-                                    if($rootScope.clusterData !== null && $rootScope.clusterData.clusters.length !== 0){
+                                    if ($rootScope.clusterData !== null && $rootScope.clusterData.clusters.length !== 0) {
                                         /* Forward to cluster view if we have cluster data. */
                                         $rootScope.isNavigationShow = true;
                                         $state.go("cluster");
-                                    }else{
+                                    } else {
                                         /* Forward to home view if we don't have cluster data. */
                                         $rootScope.isNavigationShow = false;
                                         $state.go("home");
@@ -65,6 +67,12 @@
                                 });
                             }
                         }
+                    })
+                    .state("login", {
+                        url: "/login",
+                        templateUrl: "/modules/login/login.html",
+                        controller: "LoginController",
+                        controllerAs: "loginCntrl"
                     })
                     .state("home", {
                         url: "/home",
@@ -111,7 +119,7 @@
                     .state("create-pool", {
                         url: "/pool/create-pool",
                         templateUrl: "/modules/pool/create-pool/create-pool.html",
-                      })
+                    })
                     .state("rbd", {
                         url: "/rbd",
                         templateUrl: "/modules/rbd/rbd-list/rbd-list.html",
@@ -151,29 +159,45 @@
 
             });
 
-            storageModule.run(function(utils, $rootScope, menuService) {
-                /* Tracking the current URI for navigation*/
-                $rootScope.$on("$stateChangeSuccess", function(event, current, prev) {
-                    menuService.setActive(current.name);
-                });
-                $rootScope.isAPINotFoundError = false;
-                $rootScope.clusterData = null;
-                utils.getObjectList("Cluster").then(function(list) {
-                    $rootScope.clusterData = list;
-                    /* Setting up manual broadcast event for ClusterData*/
-                    $rootScope.$broadcast("GotClusterData", $rootScope.clusterData); // going down!
-                    if($rootScope.clusterData !== null && $rootScope.clusterData.clusters.length !== 0) {
-                        /* Forward to cluster view if we have cluster data. */
-                        $rootScope.isNavigationShow = true;
-                    } else {
-                        /* Forward to home view if we don't have cluster data. */
-                        $rootScope.isNavigationShow = false;
-                    }
-                }).catch(function(error) {
-                    $rootScope.$broadcast("GotClusterData", $rootScope.clusterData); // going down!
-                    $rootScope.isAPINotFoundError = true;
+            storageModule.run(function(utils, $rootScope, menuService, $state, AuthManager, $location) {
+                var url;
+
+                $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
+                    // redirect to login page if not logged in and trying to access a restricted page
+                    //var restrictedPage = (toState.name.indexOf("login") === -1);
+                    var loggedIn = AuthManager.isUserLoggedIn;
+                    
+                    if (!loggedIn) {
+                        $state.go("login");
+                    } 
                 });
 
+                if(AuthManager.isUserLoggedIn){
+
+                        /* Tracking the current URI for navigation*/
+                        $rootScope.$on("$stateChangeSuccess", function(event, current, prev) {
+                            menuService.setActive(current.name);
+                        });
+
+                        $rootScope.isAPINotFoundError = false;
+                        $rootScope.clusterData = null;
+
+                        utils.getObjectList("Cluster").then(function(list) {
+                            $rootScope.clusterData = list;
+                            /* Setting up manual broadcast event for ClusterData*/
+                            $rootScope.$broadcast("GotClusterData", $rootScope.clusterData); // going down!
+                            if ($rootScope.clusterData !== null && $rootScope.clusterData.clusters.length !== 0) {
+                                /* Forward to cluster view if we have cluster data. */
+                                $rootScope.isNavigationShow = true;
+                            } else {
+                                /* Forward to home view if we don't have cluster data. */
+                                $rootScope.isNavigationShow = false;
+                            }
+                        }).catch(function(error) {
+                            $rootScope.$broadcast("GotClusterData", $rootScope.clusterData); // going down!
+                            $rootScope.isAPINotFoundError = true;
+                        });
+                }
             });
 
         }, function(errorResponse) {
@@ -188,4 +212,3 @@
     }
 
 }());
-

@@ -1,0 +1,36 @@
+<!-- File Share Edit Modal -->
+<div class="modal fade tendrl-file-share-edit-view-container" id="fileShareEditModal" role="dialog">
+    <div class="modal-dialog modal-md">
+        <!-- Modal content-->
+        <div class="modal-content modal-md">
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">&times;</a>
+                <h4>Edit File Share</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs">
+                    <li ng-class="{active: (fileShareCntrl.editFileShareStep === 1)}"><a ng-click="fileShareCntrl.setActiveStep(1)">General</a></li>
+                    <li ng-class="{active: (fileShareCntrl.editFileShareStep === 2)}"><a ng-click="fileShareCntrl.setActiveStep(2)">Bricks</a></li>
+                    <li ng-class="{active: (fileShareCntrl.editFileShareStep === 3)}"><a ng-click="fileShareCntrl.setActiveStep(3)">Tuning</a></li>
+                    <li ng-class="{active: (fileShareCntrl.editFileShareStep === 4)}"><a ng-click="fileShareCntrl.setActiveStep(4)">Advanced</a></li>
+                </ul>
+            </div>
+            
+            <div ng-include src="'../modules/file-share/edit-file-share/step-first.html'"></div>
+            <div ng-include src="'../modules/file-share/edit-file-share/step-second.html'"></div>
+            <div ng-include src="'../modules/file-share/edit-file-share/step-third.html'"></div>
+            <div ng-include src="'../modules/file-share/edit-file-share/step-fourth.html'"></div>
+            
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-1 pull-right">
+                        <button class="btn btn-default btn-primary" ng-click="fileShareCntrl.onEditFileShare()">Save</button>
+                    </div>
+                    <div class="col-md-1 pull-right">
+                        <button class="btn btn-default btn-md" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

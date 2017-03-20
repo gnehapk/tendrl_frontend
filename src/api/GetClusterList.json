@@ -8,6 +8,7 @@
       "sds_version": "10.2.5",
       "cluster_id": "c221ccdb-51d6-4b57-9f10-bcf30c7fa353",
       "utilization":{"available":"1221313213"},
+      "status": "active",
       "pools": {
         "0": {
           "percent_used": "0",
@@ -18,6 +19,62 @@
           "min_size": "2"
         }
       }
+    }, {
+      "fsid": "c221ccdb-51d6-4b57-9f10-bcf30c7fa352",
+      "integration_id": "c221ccdb-51d6-4b57-9f10-bcf30c7fa354",
+      "integration_name": "glsuterfs",
+      "sds_name": "glsuterfs",
+      "sds_version": "10.2.5",
+      "cluster_id": "c221ccdb-51d6-4b57-9f10-bcf30c7fa354",
+      "utilization":{"available":"1221313213"},
+      "status": "active",
+      "volumes": {
+            "0": {
+                "arbiter_count": "0",
+                "usable_capacity": "",
+                "name": "vol1",
+                "rebal_id": "8969c312-ea97-4aa4-8c52-fb452c551098",
+                "rebal_status": "completed",
+                "transport_type": "tcp",
+                "vol_type": "Distribute",
+                "snap_count": "0",
+                "rebal_skipped": "0",
+                "snapd_inited": "True",
+                "snapd_status": "Offline",
+                "brick_count": "2",
+                "disperse_count": "0",
+                "rebal_data": "0Bytes",
+                "rebal_failures": "0",
+                "rebal_lookedup": "0",
+                "stripe_count": "1",
+                "subvol_count": "2",
+                "deleted": "",
+                "redundancy_count": "0",
+                "replica_count": "1",
+                "vol_id": "123e0a4d-317b-4229-91dc-ea6a1c78819f",
+                "rebal_files": "0",
+                "bricks": {
+                    "dhcp43-109.lab.eng.blr.redhat.com:_root_bricks_vol1_b1": {
+                        "filesystem_type": "",
+                        "hostname": "dhcp43-109.lab.eng.blr.redhat.com",
+                        "mount_opts": "",
+                        "path": "dhcp43-109.lab.eng.blr.redhat.com:/root/bricks/vol1_b1",
+                        "port": "49152",
+                        "status": "Started",
+                        "vol_id": "123e0a4d-317b-4229-91dc-ea6a1c78819f"
+                    },
+                    "dhcp43-49.lab.eng.blr.redhat.com:_root_bricks_vol1_b2": {
+                        "filesystem_type": "",
+                        "hostname": "dhcp43-49.lab.eng.blr.redhat.com",
+                        "mount_opts": "",
+                        "path": "dhcp43-49.lab.eng.blr.redhat.com:/root/bricks/vol1_b2",
+                        "port": "",
+                        "status": "",
+                        "vol_id": "123e0a4d-317b-4229-91dc-ea6a1c78819f"
+                    }
+                }
+            }
+        }
     }
   ]
 }

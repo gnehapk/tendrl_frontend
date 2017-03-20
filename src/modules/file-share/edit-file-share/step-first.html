@@ -1,0 +1,36 @@
+<div class="wizard-pf-contents" ng-if="fileShareCntrl.editFileShareStep === 1">
+    <form class="form-horizontal">
+        <!-- replacing id with data-id to pass build errors -->
+        <div class="form-group required">
+            <label class="col-sm-3 col-md-2 control-label" for="cluster-name">Cluster</label>
+            <div class="col-sm-8 col-md-3">
+                <label>{{fileShareCntrl.editFileShare.clusterName}}</label>
+            </div> 
+        </div>
+        <div class="form-group required">
+            <label class="col-sm-3 col-md-2 control-label" for="fileShareName">Name</label>
+            <div class="col-sm-8 col-md-3">
+                <input type="text" data-id="fileShareName" class="form-control" name="fileShareName" ng-model="fileShareCntrl.editFileShare.fileShareName">
+                <span ng-if="!fileShareCntrl.editFileShare.fileShareName.length" class="error-msg">* File Share name is required</span>
+            </div>
+        </div>
+        <div class="form-group required">
+            <label class="col-sm-3 col-md-2 control-label" for="file-share-name">Type</label>
+            <div class="col-sm-8 col-md-3">
+                <label>{{fileShareCntrl.editFileShare.type}}</label>
+            </div> 
+        </div>
+        <div class="form-group required" ng-if="fileShareCntrl.editFileShare.type === ('2-Way Distributed Replicated' || '3-Way Distributed Replicated')">
+            <label class="col-sm-2 col-md-2 control-label" for="replica-count">Bricks per Replica Set</label>
+            <div class="col-sm-4 col-md-2">
+                <input type="number" data-id="replica-count" min=1 max=10 class="form-control" ng-model="fileShareCntrl.editFileShare.bricksPerSet" required>
+            </div>
+        </div>
+        <div class="form-group required" ng-if="fileShareCntrl.editFileShare.selectedType === 'Erasure coded'">
+            <label class="col-sm-3 col-md-2 control-label" for="ec-profile">EC Profile</label>
+            <div class="col-sm-8 col-md-3">
+                <label>{{fileShareCntrl.editFileShare.ecProfile}}</label>
+            </div> 
+        </div>
+    </form>
+</div>

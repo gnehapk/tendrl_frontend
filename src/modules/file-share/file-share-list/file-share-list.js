@@ -23,6 +23,55 @@
         vm.onOpenFileShareDeleteModal = onOpenFileShareDeleteModal;
         vm.onDeleteFileShare = onDeleteFileShare;
         vm.viewTaskProgress = viewTaskProgress;
+        vm.onOpenRbdEditModal = onOpenRbdEditModal;
+        vm.onEditFileShare = onEditFileShare;
+
+        //Edit File Share    
+        vm.editFileShareStep = 1;
+        vm.editFileShare = {
+            clusterName: "Gluster1",
+            type: "2-Way Distributed Replicated",
+            fileShareName: "GlusterVolume",
+            bricksPerSet: 2,
+            ecProfile: "4+2",
+            settings: {
+                optimizedOptions: ["Archival", "Containers", "DSS/Analytics", "File Sharing(Default)", "Home directories", "OLTP Databases", "Streaming Media", "Web Hosting", "Virtualization"],
+                selectedOption: "File Sharing(Default)",
+                protocol: "gluster",
+                transportType: ["tcp"],
+                accessFrom: "*"
+            }
+        };
+        vm.setActiveStep = setActiveStep;
+        vm.updateProtocol = updateProtocol;
+        vm.updateTransportType = updateTransportType;
+        vm.isSelectedProtocol = isSelectedProtocol;
+        vm.isSelectedType = isSelectedType;
+
+        function updateProtocol(protocol) {
+            vm.editFileShare.settings.protocol = protocol;
+        }
+
+        function updateTransportType(type) {
+            var typeIndex;
+
+            typeIndex = vm.editFileShare.settings.transportType.indexOf(type);
+
+            if(typeIndex === -1) {
+                vm.editFileShare.settings.transportType.push(type);
+            } else {
+                vm.editFileShare.settings.transportType.splice(typeIndex, 1)   
+            }
+        }
+
+        function isSelectedProtocol(protocol) {
+            return protocol === vm.editFileShare.settings.protocol;
+        }
+
+        function isSelectedType(type) {
+            return vm.editFileShare.settings.transportType.indexOf(type) > -1;
+        }
+        //End Edit File Share
 
         init();
 
@@ -129,12 +178,24 @@
                 });
         }
 
+        function onOpenRbdEditModal() {
+
+        }
+
+        function setActiveStep(step) {
+            vm.editFileShareStep = step;
+        }
+
         function viewTaskProgress(modalId) {
             $(modalId).modal("hide");
             
             setTimeout(function() {
                 $state.go("task");
             },1000);
+        }
+
+        function onEditFileShare() {
+            console.log("hello");
         }
     }
 

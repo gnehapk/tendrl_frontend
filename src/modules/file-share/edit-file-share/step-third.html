@@ -1,0 +1,12 @@
+<div class="wizard-pf-contents" ng-if="fileShareCntrl.editFileShareStep === 3">
+    <form class="form-horizontal">
+        <div class="form-group required">
+            <div class="col-md-2 col-sm-4">
+                <label class="control-label pull-right" for="optimizedOptions">Optimized For</label>
+            </div>
+            <div class="col-md-6 col-sm-8">
+                <select data-ng-options="option for option in fileShareCntrl.editFileShare.settings.optimizedOptions" data-ng-model="fileShareCntrl.editFileShare.settings.selectedOption" class="form-control" data-id="optimizedOptions"></select>
+            </div>
+        </div>
+    </form>
+</div>

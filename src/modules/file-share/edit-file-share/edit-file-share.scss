@@ -1,0 +1,15 @@
+.tendrl-file-share-edit-view-container {
+    .modal-dialog {
+        width: 1000px;
+    }
+
+    .protocol-options {
+        padding: 0;
+
+        input[type=checkbox] {
+            vertical-align: bottom;
+            height: 20px;
+            width: 20px;
+        }
+    }
+}

@@ -125,7 +125,7 @@
                 _resetList(vm.brickCreationHost);
                 _updateBrickCreationHost();
             } else if (vm.selectedStep === 4) {
-                brickStore.createBrick(vm.brickCreationHost)
+                brickStore.createBrick(vm.brickCreationHost, vm.selectedCluster)
                     .then(function(data) {
                         vm.taskSubmitted = true;
                         vm.job= data.job_id;

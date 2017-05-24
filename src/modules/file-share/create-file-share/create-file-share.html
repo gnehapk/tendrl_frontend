@@ -1,7 +1,8 @@
 <div ng-if="clusterData === null && !isAPINotFoundError" class="spinner spinner-lg"></div>
-<div ng-if="clusterData !== null" class="tendrl-cluster-list-view-container container-fluid">
+<div ng-if="clusterData !== null" class="tendrl-create-file-share-container container-fluid">
     <h1 class="bold-text">Create File Share</h1>
     <!-- <button type="button" class="btn btn-default wizard-pf-back" ng-click="vm.onCreateBrickModal()">
         <span class="i fa fa-angle-left"></span> Create Brick
     </button> -->
+    <div ng-include src="'../../modules/file-share/create-file-share/step-third.html'"></div>
 </div>

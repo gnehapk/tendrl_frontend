@@ -1,0 +1,33 @@
+.tendrl-create-file-share-container {
+    .layout-container {
+        .table-container {
+            width: 100%;
+        }
+        .list-group-item-container {
+            border-top: solid 1px $color-dark-gray;
+            .list-group-item {
+                margin-left: 15px;
+                padding-left: 0;
+                margin-right: 15px;
+
+                &:hover {
+                	background-color: transparent;
+                }
+            }
+        }
+        .toolbar-pf-filter {
+            width: 37%;
+        }
+        .list-container {
+            max-height: 60vh;
+            overflow: auto;
+            overflow-x: hidden;
+        }
+        .list-view-pf-expand-active {
+            border: solid 1px $color-dark-gray;
+            &:first-child {
+                border-top-color: $color-dark-gray;
+            }
+        }
+    }
+}

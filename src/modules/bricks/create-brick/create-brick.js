@@ -60,7 +60,8 @@
         }, {
             "name": "Back",
             "classname": "btn-default",
-            "onCall": vm.back
+            "onCall": vm.back,
+            "disable": (vm.selectedStep === 1)
         }, {
             "name": "Next",
             "classname": "btn-primary",
@@ -93,6 +94,7 @@
                         for (i = 0; i < glusterClusterListLen; i++) {
                             if (vm.glusterClusterList[i].cluster_id === selectedCluster.cluster_id) {
                                 vm.selectedCluster = vm.glusterClusterList[i];
+                                vm.modalFooter[2].disable = (vm.selectedCluster.nodes.length > 0) ? false : true
                                 break;
                             }
                         }
@@ -406,7 +408,6 @@
                     }
                 }
             }
-
         }
 
         function _updateHost(host) {

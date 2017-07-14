@@ -41,10 +41,12 @@
             };
         }
 
-        function setUserInfo(user, accesstoken){
+        function setUserInfo(user, accesstoken, role){
             authApiFactory.globalUser.username = user.username;
             authApiFactory.globalUser.accessToken = accesstoken;
+            authApiFactory.globalUser.role = role;
             localStorage.setItem("userInfo", JSON.stringify(authApiFactory.globalUser));
+            $rootScope.$broadcast("PermissionsChanged", role);
         }
 
         function getUserInfo(){
@@ -91,7 +93,7 @@
                 return $http(req).then(function (response) {
 
                     if (response.data.access_token) {
-                        setUserInfo(user,response.data.access_token);
+                        setUserInfo(user,response.data.access_token, data.role);
                         return response.data;
                     } else {
                         return $q.reject({});

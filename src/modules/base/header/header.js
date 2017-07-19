@@ -6,7 +6,7 @@
     app.controller("headerController", headerController);
 
     /*@ngInject*/
-    function headerController($rootScope, $state, $scope, AuthManager, utils) {
+    function headerController($rootScope, $state, $scope, AuthManager, utils, userStore) {
 
         var vm = this;
 
@@ -46,6 +46,7 @@
             AuthManager.logout()
             .then(function (data) {
                 AuthManager.setFlags();
+                userStore.clearUserRole();
             })
             .then(function () {
                 $state.go("login");

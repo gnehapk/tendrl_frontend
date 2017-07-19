@@ -6,7 +6,7 @@
     app.controller("LoginController", LoginController);
 
     /*@ngInject*/
-    function LoginController($scope, $window, $location, $state, $rootScope, AuthManager) {
+    function LoginController($scope, $window, $location, $state, $rootScope, AuthManager, userStore, menuService) {
 
         /* Controller instance */
         var vm = this;
@@ -32,13 +32,20 @@
                     AuthManager.isUserLoggedIn = true;
                     AuthManager.setAuthHeader();
                 })
-                .then(function () {
-                    $state.go("landing-page");
-                })
                 .catch(function(){
                     AuthManager.isUserLoggedIn = false;
                     vm.errorMsg = "The username or password you entered does not match our records. Please try again.";
                     vm.user.password = "";
+                })
+                .then(function() {
+                    return userStore.getUserDetails();
+                })
+                .catch(function() {
+                    console.log("error in getting user details");
+                })
+                .then(function () {
+                    menuService.setMenus();
+                    $state.go("landing-page");
                 })
                 .finally(function () {
                     vm.formSubmitInProgress = false;

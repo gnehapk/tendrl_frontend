@@ -101,6 +101,10 @@
                             }
                         }
                     })
+                    .state("forbidden", { /* This will decide which view will be landing page */
+                        url: "/forbidden",
+                        template: "<div>Not Authorized<div>"
+                    })
                     .state("login", {
                         url: "/login",
                         templateUrl: "/modules/login/login.html",
@@ -227,7 +231,7 @@
                     });
 
             });
-            storageModule.run(function($rootScope, $location, $http, $interval, menuService, AuthManager, utils, eventStore, config) {
+            storageModule.run(function($rootScope, $location, $http, $interval, $state, menuService, AuthManager, utils, eventStore, config, userStore) {
                 var restrictedPage, loggedIn, notificationTimer;
 
                 $rootScope.$on("$locationChangeStart", function(event, current, next) {
@@ -241,6 +245,12 @@
                     }
                     if (!restrictedPage) {
                         $rootScope.isHeaderShow = false;
+                    }
+                });
+
+                $rootScope.$on("$stateChangeStart", function(event, next, current) {
+                    if ((next.name.indexOf("tasks") !== -1) && (userStore.getUserRole() !== "admin")) {
+                        $location.path("/forbidden");
                     }
                 });
 

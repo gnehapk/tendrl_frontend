@@ -193,6 +193,49 @@
                 });
             });
 
+            storageModule.run(function($rootScope, $interval, $document, $state, AuthManager, config) {
+
+                // Timeout timer value
+                var sessionTimeOut = config.sessionIntervalTime * 1000,
+                    // Start a timeout
+                    sessionTimer = $interval(function() { LogoutByTimer() }, sessionTimeOut),
+                    bodyElement = angular.element($document);
+
+                angular.forEach(["keydown", "keyup", "click", "mousemove", "DOMMouseScroll", "mousewheel", "mousedown", "touchstart", "touchmove", "scroll", "focus"],
+                    function(eventName) {
+                        bodyElement.bind(eventName, function(e) { resetSession(e) });
+                    });
+
+                function LogoutByTimer() {
+                    if ($state.current.name !== "login") {
+                        AuthManager.logout()
+                            .then(function() {
+                                $interval.cancel(sessionTimer);
+                                bodyElement.unbind();
+                            })
+                            .then(function() {
+                                AuthManager.setFlags();
+                            })
+                            .then(function() {
+                                $state.go("login");
+                            })
+                            .catch(function(e) {
+                                AuthManager.isUserLoggedIn = true;
+                                console.log("Logout Error: Logout Not Successful");
+                            });
+                    }
+                }
+
+                function resetSession(e) {
+                    /// Stop the pending timeout
+                    $interval.cancel(sessionTimer);
+
+                    /// Reset the timeout
+                    sessionTimer = $interval(function() { LogoutByTimer() }, sessionTimeOut);
+                }
+
+            });
+
         }, function(errorResponse) {
             // Handle error case
         });

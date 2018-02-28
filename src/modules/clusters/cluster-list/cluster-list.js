@@ -41,7 +41,7 @@
         vm.doClusterUnmanage = doClusterUnmanage;
         vm.redirectToGrafana = redirectToGrafana;
         vm.addTooltip = addTooltip;
-        //vm.clearAllFilters = clearAllFilters;
+        vm.openHostModal = openHostModal;
         vm.openErrorModal = openErrorModal;
         vm.goToTaskDetail = goToTaskDetail;
 
@@ -221,6 +221,32 @@
                 backdrop: "static",
                 templateUrl: "/modules/clusters/cluster-error-list/cluster-error-list.html",
                 controller: "errorListController",
+                controllerAs: "vm",
+                size: "lg",
+                resolve: {
+                    cluster: cluster
+                }
+            });
+
+            closeWizard = function(e, reason) {
+                modalInstance.dismiss(reason);
+                wizardDoneListener();
+            };
+
+            modalInstance.result.then(function() {}, function() {});
+            wizardDoneListener = $rootScope.$on("modal.done", closeWizard);
+        }
+
+        function openHostModal(cluster) {
+            var wizardDoneListener,
+                modalInstance,
+                closeWizard;
+
+            modalInstance = $uibModal.open({
+                animation: true,
+                backdrop: "static",
+                templateUrl: "/modules/clusters/host-list-modal/host-list-modal.html",
+                controller: "hostModalController",
                 controllerAs: "vm",
                 size: "lg",
                 resolve: {

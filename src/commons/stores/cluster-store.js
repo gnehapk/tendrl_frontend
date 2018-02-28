@@ -60,6 +60,7 @@
                 temp.currentTaskId = JSON.parse(data[i].current_job).job_id;
                 temp.volCount = data[i].globaldetails && data[i].globaldetails.vol_count ? parseInt(data[i].globaldetails.vol_count) : 0;
                 temp.alertCount = data[i].alert_counters ? parseInt(data[i].alert_counters.warning_count) : 0;
+                temp.hostCount = data[i].nodes.length || 0;
 
                 temp.errors = data[i].errors ? data[i].errors : [];
 

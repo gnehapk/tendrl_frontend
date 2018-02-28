@@ -1,0 +1,11 @@
+.tendrl-host-list-modal-container {
+    .host-list {
+        max-height: 60vh;
+        /*overflow: auto;*/
+        display: block;
+        padding-top: 0;
+    }
+    .list-view-pf .list-group-item-heading {
+        white-space: inherit;
+    }
+}

@@ -38,7 +38,7 @@
 
                 configProvider.setConfigData(response.data);
 
-                $httpProvider.defaults.headers.post = {};
+                //$httpProvider.defaults.headers.post = {};
                 $httpProvider.defaults.headers.delete = {};
 
                 $urlRouterProvider.otherwise("/login");

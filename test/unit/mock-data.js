@@ -1108,4 +1108,73 @@
         }]
     })
 
+    testDataModule.value("alertList", {
+        alerts: [{
+            "alertId": "26d79958-d15d-4051-839c-4537b7a23ac1",
+            "timeStamp": "2017-03-26 16:21:57.751063+00:00",
+            "nodeId": "538b4730-5709-46f8-bd1d-08f64fb25163",
+            "severity": "error",
+            "fqdn": "dhcp43-209.lab.eng.blr.redhat.com",
+            "desc": "Host dhcp43-77.lab.eng.blr.redhat.com, plugin memory type percent (instance used): Data source \"value\" is currently 13.770778. That is above the failure threshold of 2.000000.\n",
+            "clusterId": "",
+            "clusterName": "",
+            "sdsName": ""
+        }, {
+            "alertId": "3c2e0f1d-4207-4aa4-b2cf-a05064a10ab3",
+            "timeStamp": "2017-04-26 16:21:58.248300+00:00",
+            "nodeId": "c2d0d6cb-f5c0-40e2-91a7-722d53f823c7",
+            "severity": "info",
+            "fqdn": "dhcp43-208.lab.eng.blr.redhat.com",
+            "desc": "Host dhcp43-74.lab.eng.blr.redhat.com, plugin memory type percent (instance used): Data source \"value\" is currently 13.812439. That is above the failure threshold of 2.000000.\n",
+            "clusterId": "",
+            "clusterName": "",
+            "sdsName": ""
+        }, {
+            "alertId": "05720f42-5493-443c-83d6-6f0746ee0c1f",
+            "timeStamp": "2017-02-26 16:21:59.562519+00:00",
+            "nodeId": "538b4730-5709-46f8-bd1d-08f64fb25163",
+            "severity": "warning",
+            "fqdn": "dhcp43-207.lab.eng.blr.redhat.com",
+            "desc": "Host cluster_gc3b125e-4769-4071-a349-e82b380c11f4, plugin cluster_utilization type percent (instance percent_bytes): Data source \"value\" is currently 5.018519. That is above the failure threshold of 2.000000.\n",
+            "clusterId": "gc3b125e-4769-4071-a349-e82b380c11f4",
+            "clusterName": "gc3b125e-4769-4071-a349-e82b380c11f4",
+            "sdsName": ""
+        }],
+        filteredList: {
+            warningAlerts: [{
+                "alertId": "05720f42-5493-443c-83d6-6f0746ee0c1f",
+                "timeStamp": "2017-02-26 16:21:59.562519+00:00",
+                "nodeId": "538b4730-5709-46f8-bd1d-08f64fb25163",
+                "severity": "warning",
+                "fqdn": "dhcp43-207.lab.eng.blr.redhat.com",
+                "desc": "Host cluster_gc3b125e-4769-4071-a349-e82b380c11f4, plugin cluster_utilization type percent (instance percent_bytes): Data source \"value\" is currently 5.018519. That is above the failure threshold of 2.000000.\n",
+                "clusterId": "gc3b125e-4769-4071-a349-e82b380c11f4",
+                "clusterName": "gc3b125e-4769-4071-a349-e82b380c11f4",
+                "sdsName": ""
+            }],
+            errorAlerts: [{
+                "alertId": "26d79958-d15d-4051-839c-4537b7a23ac1",
+                "timeStamp": "2017-03-26 16:21:57.751063+00:00",
+                "nodeId": "538b4730-5709-46f8-bd1d-08f64fb25163",
+                "severity": "error",
+                "fqdn": "dhcp43-209.lab.eng.blr.redhat.com",
+                "desc": "Host dhcp43-77.lab.eng.blr.redhat.com, plugin memory type percent (instance used): Data source \"value\" is currently 13.770778. That is above the failure threshold of 2.000000.\n",
+                "clusterId": "",
+                "clusterName": "",
+                "sdsName": ""
+            }],
+            infoAlerts: [{
+                "alertId": "3c2e0f1d-4207-4aa4-b2cf-a05064a10ab3",
+                "timeStamp": "2017-04-26 16:21:58.248300+00:00",
+                "nodeId": "c2d0d6cb-f5c0-40e2-91a7-722d53f823c7",
+                "severity": "info",
+                "fqdn": "dhcp43-208.lab.eng.blr.redhat.com",
+                "desc": "Host dhcp43-74.lab.eng.blr.redhat.com, plugin memory type percent (instance used): Data source \"value\" is currently 13.812439. That is above the failure threshold of 2.000000.\n",
+                "clusterId": "",
+                "clusterName": "",
+                "sdsName": ""
+            }]
+        }
+    })
+
 })();

@@ -1,6 +1,14 @@
 import React, { Component } from "react";
-import ngDeps from "../js/ng-react-ng-deps.js";
+var storageModule = angular.module("TendrlModule");
 
+storageModule.run([
+    "$rootScope",
+    "$state",
+    "$q",
+    ($rootScope, $state, $q) => {
+        injectNgDeps({ $rootScope, $state, $q });
+    },
+]);
 const EventStore = {
     getAlertList: function() {
         var list,
@@ -80,8 +88,6 @@ const EventStore = {
         }
     }
 };
-
-export default EventStore;
 
 angular
     .module("TendrlModule")

@@ -7,14 +7,3 @@ export function injectNgDeps(deps) {
 };
 
 export default ngDeps;
-
-var storageModule = angular.module("TendrlModule");
-
-storageModule.run([
-    "$rootScope",
-    "$state",
-    "$q",
-    ($rootScope, $state, $q) => {
-        injectNgDeps({ $rootScope, $state, $q });
-    },
-]);

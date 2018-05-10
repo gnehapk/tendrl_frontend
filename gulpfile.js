@@ -215,8 +215,8 @@ gulp.task("resource", function(done) {
 gulp.task("jsbundle", ["eslint"], function() {
 
     return gulp.src(paths.jsFiles, { cwd: paths.src })
-        .pipe(babel({ presets: ["es2015"] }))
         .pipe(concat("plugin-bundle.js"))
+        .pipe(babel({ presets: ["es2015"] }))
         .pipe(gulp.dest(paths.dest));
 });
 

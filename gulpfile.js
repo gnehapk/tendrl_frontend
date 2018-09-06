@@ -94,6 +94,7 @@ gulp.task("jsLibraries", function() {
     "node_modules/jquery/dist/jquery.min.js",
     "node_modules/bootstrap/dist/js/bootstrap.min.js", // For dropdown : temporary
     "node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js",
+    "node_modules/bootstrap-select/dist/js/bootstrap-select.js",
     "node_modules/angular/angular.js",
     "node_modules/angular-ui-bootstrap/dist/ui-bootstrap.min.js",
     "node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js",
@@ -121,8 +122,7 @@ gulp.task("cssLibraries", function() {
   return gulp.src([
     "node_modules/patternfly/dist/css/patternfly.css",
     "node_modules/patternfly/dist/css/patternfly-additions.css",
-    "node_modules/angular-patternfly/styles/angular-patternfly.css",
-    "node_modules/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css"
+    "node_modules/angular-patternfly/styles/angular-patternfly.css"
   ])
   .pipe(postCss([autoprefixer({ browsers: browsers })]))
   .pipe(buildMode === "dev" ? noop() : minifyCSS())

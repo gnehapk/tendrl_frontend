@@ -1,4 +1,4 @@
-<nav class="navbar-pf-vertical tendrl-header-container">
+<nav class="navbar navbar-pf-vertical navbar-pf-contextselector tendrl-header-container">
     <div class="navbar-header">
         <button ng-if="!$root.forceHideNav()" ng-class="{'navigation-hide': $root.forceHideNav()}" class="navbar-toggle" type="button" href="" ng-click="header.toggleNav($event)">
             <span class="sr-only">Toggle navigation</span>
@@ -9,12 +9,24 @@
         <a class="navbar-brand" ng-click="header.homePage()" class="nav-brand-name-link">
             <img class="nav-brand-name brand-name-img" src="../images/name.png" alt="tendrl | Unified Storage Manager" />
         </a>
-        <select id="repeatSelect" ng-model="$root.selectedClusterOption" class="cluster-options btn btn-default dropdown-toggle filterSelect" ng-change="header.goToClusterPage()" uib-tooltip-html="header.getClusterName($root.selectedClusterOption)" tooltip-placement="auto bottom">
-            <option value="" disabled ng-selected="!$root.selectedClusterOption">Select a cluster...</option>
-            <option value="allClusters" ng-selected="$root.selectedClusterOption === 'allClusters'">All Clusters</option>
-            <option ng-repeat="cluster in $root.clusterData" value="{{cluster.clusterId}}" ng-selected="$root.selectedClusterOption === '{{cluster.clusterId}}'" ng-show="cluster.managed === 'Yes' && cluster.jobType !== 'UnmanageCluster'">{{cluster.name}}</option>
-            <!-- To filter managed clusters :  | filter: {is_managed: 'yes'}-->
-        </select>
+        <div class="nav contextselector-pf">
+            <select class="selectpicker" data-live-search="true">
+                <option>Really long server name server name</option>
+                <option>A Different Context</option>
+                <option>A Second Context</option>
+                <option>Current</option>
+                <option>Superlongstringwithoutanyspacesthatkeepsgoingandgoingandgoing</option>
+                <option>Dolor Sit Amet</option>
+                <option>Dolor Sit Amet</option>
+                <option>Dolor Sit Amet</option>
+                <option>Dolor Sit Amet</option>
+                <option>Dolor Sit Amet</option>
+                <option>Dolor Sit Amet</option>
+                <option>Dolor Sit Amet</option>
+                <option>Dolor Sit Amet</option>
+                <option>Dolor Sit Amet</option>
+            </select>
+        </div>
     </div>
     <nav class="collapse navbar-collapse">
         <span class="pull-right">
@@ -42,15 +54,7 @@
                     <i class="pficon pficon-user"></i>
                     <span class="headerName">{{ header.currentUser }}</span>
                 </a>
-                <pf-modal-overlay 
-                    show-modal="header.showUserSetting" 
-                    on-close="header.closeUserSetting(dismissCause)" 
-                    modal-id="header.userSettingId" 
-                    modal-title="header.userSettingTitle" 
-                    modal-body-template="header.userSettingTemplate" 
-                    action-buttons="header.userSettingActionButtons" 
-                    is-form="header.isForm"
-                    modal-body-scope="header.userScope">
+                <pf-modal-overlay show-modal="header.showUserSetting" on-close="header.closeUserSetting(dismissCause)" modal-id="header.userSettingId" modal-title="header.userSettingTitle" modal-body-template="header.userSettingTemplate" action-buttons="header.userSettingActionButtons" is-form="header.isForm" modal-body-scope="header.userScope">
                 </pf-modal-overlay>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="usermenu">
                     <li role="presentation"><a href="" role="menuitem" tabindex="-1" ng-click="header.userSetting()">My Settings</a></li>

@@ -3,7 +3,7 @@
 
     angular
         .module("TendrlModule")
-        .component("header", {
+        .component("tendrlHeader", {
 
             templateUrl: "/modules/base/header/header.html",
             controller: headerController,

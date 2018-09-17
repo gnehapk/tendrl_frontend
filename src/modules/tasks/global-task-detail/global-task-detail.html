@@ -22,7 +22,7 @@
         </div>
         <div class="form-group required">
             <label class="col-sm-3 col-md-1 detail-label">Status:</label>
-            <label class="col-sm-4 col-md-1 status-value"><i ng-class="{'pficon pficon-ok status-icon': (glbTaskDetailCntrl.taskDetail.status === 'finished')}"></i>{{glbTaskDetailCntrl.taskDetail.status === 'finished' ? "Completed": glbTaskDetailCntrl.taskDetail.status}}</label>
+            <label class="col-sm-4 col-md-2 status-value"><i ng-class="{'pficon pficon-ok status-icon': (glbTaskDetailCntrl.taskDetail.status === 'finished')}"></i>{{glbTaskDetailCntrl.taskDetail.status === 'finished' ? "Completed": glbTaskDetailCntrl.taskDetail.status}}</label>
             <label class="col-sm-4 col-md-2" ng-show="(glbTaskDetailCntrl.taskDetail.flow === 'ImportCluster') && (glbTaskDetailCntrl.taskDetail.status === 'finished') &&(!$root.selectedClusterOption)"><span class="spinner spinner-xs spinner-inline" ng-show="glbTaskDetailCntrl.showLoadingIcon"></span> <a href="" ng-click="glbTaskDetailCntrl.goToClusterDetail()">View cluster details</a></label>
         </div>
     </form>

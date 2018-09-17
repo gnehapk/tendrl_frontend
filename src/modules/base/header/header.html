@@ -10,21 +10,10 @@
             <img class="nav-brand-name brand-name-img" src="../images/name.png" alt="tendrl | Unified Storage Manager" />
         </a>
         <div class="nav contextselector-pf">
-            <select class="selectpicker" data-live-search="true">
-                <option>Really long server name server name</option>
-                <option>A Different Context</option>
-                <option>A Second Context</option>
-                <option>Current</option>
-                <option>Superlongstringwithoutanyspacesthatkeepsgoingandgoingandgoing</option>
-                <option>Dolor Sit Amet</option>
-                <option>Dolor Sit Amet</option>
-                <option>Dolor Sit Amet</option>
-                <option>Dolor Sit Amet</option>
-                <option>Dolor Sit Amet</option>
-                <option>Dolor Sit Amet</option>
-                <option>Dolor Sit Amet</option>
-                <option>Dolor Sit Amet</option>
-                <option>Dolor Sit Amet</option>
+            <select class="selectpicker" data-live-search="true" ng-model="$root.selectedClusterOption" ng-change="header.goToClusterPage()" uib-tooltip-html="header.getClusterName($root.selectedClusterOption)" tooltip-placement="auto bottom">
+                <option value="" disabled ng-selected="!$root.selectedClusterOption">Select a cluster...</option>
+                <option value="allClusters" ng-selected="$root.selectedClusterOption === 'allClusters'">All Clusters</option>
+                <option ng-repeat="cluster in $root.clusterData" value="{{cluster.clusterId}}" ng-selected="$root.selectedClusterOption === '{{cluster.clusterId}}'" ng-show="cluster.managed === 'Yes' && cluster.jobType !== 'UnmanageCluster'">{{cluster.name}}</option>
             </select>
         </div>
     </div>

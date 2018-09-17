@@ -1,8 +1,8 @@
 //# sourceURL=storage-management-plugin.js
 (function() {
 
-    var storageModule = angular.module("TendrlModule", ["ui.router", "ui.bootstrap", "frapontillo.bootstrap-switch", "gridshore.c3js.chart", "patternfly.charts", "patternfly.card", "patternfly.form", "patternfly.notification", "patternfly.table", "patternfly.filters", "patternfly.modals"]);
-    
+    var storageModule = angular.module("TendrlModule", ["ui.router", "ui.bootstrap", "frapontillo.bootstrap-switch", "patternfly.charts", "patternfly.card", "patternfly.form", "patternfly.notification", "patternfly.table", "patternfly.filters", "patternfly.modals"]);
+
     /* Setting up provider for getting config data */
     storageModule.provider("config", function() {
 
@@ -112,7 +112,7 @@
                     });
 
             });
-            storageModule.run(function($rootScope, $location, $http, $interval, $transitions, menuService, AuthManager, utils, eventStore, config, clusterStore, userStore) {
+            storageModule.run(function($rootScope, $location, $http, $interval, $timeout, $transitions, menuService, AuthManager, utils, eventStore, config, clusterStore, userStore) {
                 var restrictedPage, loggedIn, alertListTimer;
 
                 $rootScope.$on("$locationChangeStart", function(event, current, next) {

@@ -13,7 +13,7 @@
         });
 
     /*@ngInject*/
-    function clusterHostsController($stateParams, $scope, $rootScope, $interval, utils, clusterStore, config) {
+    function clusterHostsController($stateParams, $scope, $rootScope, $interval, $timeout, utils, clusterStore, config) {
 
         var vm = this,
             clusterDetailTimer;
@@ -40,6 +40,8 @@
                 _setClusterDetail();
                 vm.isDataLoading = false;
             }
+
+            utils.refershSelector();
         }
 
         /***Private Functions***/
@@ -47,7 +49,7 @@
         /**
          * @name _setClusterDetail
          * @desc set cluster detail
-         * @memberOf clusterDetailController
+         * @memberOf clusterHostsController
          */
         function _setClusterDetail() {
             vm.clusterObj = clusterStore.getClusterDetails(vm.clusterId);
